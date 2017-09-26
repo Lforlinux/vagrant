@@ -1,4 +1,7 @@
-##Vagantfile 
+
+#Vagrant Virtual box creation
+
+Download this Vagrantfile on $HOME folder
 
 ```bash
 $ Vagrant.configure("2") do |config|
@@ -11,43 +14,21 @@ end
  
 ```
 
-
 ##Named definition here docker is just a name 
-
 ```bash
 $config.vm.define "docker" do |docker|
  end
-
 ```
-
 ##Network selection 
 ```bash
 $config.vm.network "public_network"
 ```
-
-
-#Vagrant Virtual box creation
-
-Download this virtualbox on $HOME folder
-
-```bash
-$ Vagrant.configure("2") do |config|
-  config.vm.box = "lekshmin/centos7-docker"
-  config.vm.box_version = "1.1.1"
-  config.vm.network "public_network"
-  config.vm.define "docker" do |docker|
-  end
-end
- 
-```
-
 
 #Vagrant up
 
 ```bash
 Vagrant up adp 
 ```
-
 
 #select the network connection method 
 
@@ -72,24 +53,18 @@ $ ssh vagrant adp
 $ sudo bash
 ```
 
-
-run script - Run the Nginx image, mounting the certificates directory from your host.
-
-
-Run the repo-sync.sh in-order to fetch the GIT repositary on location machine. 
+##Run the repo-sync.sh in-order to fetch the GIT repositary on location machine. 
 
 ```bash
 $bash repo-sync.sh
-
-
+```
 
 
 ```bash
 $cd nginx-docker-master
+```
 
-
-Building our own docker image from a Dockerfile inorder to install nginx server
-
+##Building our own docker image from a Dockerfile inorder to install nginx server
 #Dockerfile
 ```bash
 #Set the base image to centos
@@ -135,11 +110,10 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 f2b6e1eea261        centos7/nginx       "nginx '-g daemon off"   3 seconds ago       Up 2 seconds        0.0.0.0:80->80/tcp   nginx-adp-v1.1
 ```
 
+##Access the web server from the browser by navigating to
 ```bash
-Access the web server from the browser by navigating to
 $localhost:80 
 ```
-
 
 #Installing nginx server by Docker-compose 
 ```bash
@@ -169,7 +143,6 @@ services:
 
 ```
 
-
 #Docker-compose
 ```bash
 $docker-compose up -d
@@ -180,8 +153,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 6c3dd35f3133        nginx:1.10.0        "nginx -g 'daemon off"   About an hour ago   Up 10 seconds       0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   nginxdockercomposemaster_nginx_1
 ```
 
-```bash
+
 Access the web server from the browser by navigating to
+```bash
 $localhost:80 
 ```
 
